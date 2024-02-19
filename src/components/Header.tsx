@@ -17,7 +17,7 @@ export default function Header() {
         </ul>
       </div>
       <div>
-        <ul className="flex justify-evenly w-72 items-center">
+        <ul className="flex justify-evenly items-center">
           <li className="mr-3">
             <button>
               <IoSunnyOutline />

@@ -1,12 +1,32 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Carousel from "../components/Carousel";
+import CategorySection from "../components/CategorySection";
+import { useRecoilValue } from "recoil";
+import { ShopDataAtom } from "../recoil/ShopDataAtom";
 
 export default function Home() {
+  const item = useRecoilValue(ShopDataAtom);
   return (
-    <div>
+    <div className="bg-slate-700">
       <Carousel />
-      <div className="bg-slate-500">Home</div>
+      <CategorySection
+        category={"men's clothing"}
+        title={"패션"}
+        data={item}
+        isPage={false}
+      />
+      <CategorySection
+        category={"jewelery"}
+        title={"액세서리"}
+        data={item}
+        isPage={false}
+      />
+      <CategorySection
+        category={"electronics"}
+        title={"디지털"}
+        data={item}
+        isPage={false}
+      />
     </div>
   );
 }

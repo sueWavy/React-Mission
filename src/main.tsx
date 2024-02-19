@@ -11,12 +11,14 @@ import Accessory from "./pages/Accessory.js";
 import Digital from "./pages/Digital.js";
 import Cart from "./pages/Cart.js";
 import NotFound from "./pages/NotFound.js";
+import Detail from "./pages/Detail.js";
+import Header from "./components/Header.js";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <NotFound />,
+    // errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -36,8 +38,16 @@ const router = createBrowserRouter([
         element: <Digital />,
       },
       {
+        path: "/product/:id",
+        element: <Detail />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
