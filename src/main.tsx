@@ -1,8 +1,10 @@
 import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home.js";
 import Fashion from "./pages/Fashion.js";
 import Accessory from "./pages/Accessory.js";
@@ -42,7 +44,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <RecoilRoot>
+    {/* <React.StrictMode> */}
     <RouterProvider router={router} />
-  </React.StrictMode>
+    {/* </React.StrictMode> */}
+  </RecoilRoot>
 );
