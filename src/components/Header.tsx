@@ -1,13 +1,16 @@
 import React from "react";
-import { IoSunnyOutline } from "react-icons/io5";
 import { BsCart4 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import ThemeButton from "./ThemeButton";
 
 export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full h-16 flex justify-between items-center bg-slate-900  text-white text-xl font-bold pl-20 pr-20">
+    <header
+      className="w-full h-16 flex justify-between items-center  text-xl font-bold pl-20 pr-20 shadow-md"
+      style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }}
+    >
       <div>
         <ul className="flex justify-around w-80 cursor-pointer">
           <li onClick={() => navigate("/")}>React Shop</li>
@@ -19,16 +22,10 @@ export default function Header() {
       <div>
         <ul className="flex justify-evenly items-center">
           <li className="mr-3">
-            <button>
-              <IoSunnyOutline />
-            </button>
+            <ThemeButton />
           </li>
           <li className="mr-3">
-            <input
-              className="p-2 bg-slate-500"
-              type="text"
-              placeholder="검색"
-            />
+            <input className="p-2 " type="text" placeholder="검색" />
           </li>
           <li>
             <button>

@@ -11,7 +11,7 @@ import { FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className="flex flex-col justify-around items-center h-96 p-3 bg-slate-800 text-slate-300">
+    <div className="flex flex-col justify-around items-center h-96 p-3 bg-gray-200 dark:bg-slate-800 text-black dark:text-slate-300">
       <p>제로베이스</p>
       <ul className="flex justify-between items-center ">
         <li className="m-2">

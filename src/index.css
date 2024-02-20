@@ -6,8 +6,17 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: all 0.07s;
 }
 
 body {
-  @apply text-black dark:text-white dark:bg-slate-800;
+  @apply text-black dark:text-white dark:bg-slate-700;
+}
+
+header {
+  @apply bg-white dark:bg-slate-900  dark:text-white;
+}
+
+header input {
+  @apply bg-slate-200 dark:bg-slate-400 dark:placeholder:text-white;
 }

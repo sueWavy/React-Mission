@@ -7,8 +7,7 @@ export default function Fashion() {
   const item = useRecoilValue(ShopDataAtom);
 
   return (
-    <div className="bg-slate-700">
-      <p className="pl-24 pt-6 text-slate-400 font-semibold ">홈 &gt; 패션</p>
+    <div className="bg-white dark:bg-slate-700">
       <CategorySection
         category={"men's clothing"}
         title={"패션"}

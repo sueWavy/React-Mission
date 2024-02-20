@@ -41,8 +41,8 @@ export default function Detail() {
   console.log(category);
 
   return (
-    <div className="bg-slate-700 w-full h-full">
-      <p className="pl-24 pt-6 text-slate-400 font-semibold ">
+    <div className="bg-white dark:bg-slate-700 w-full h-full mt-24">
+      <p className="pl-24 pt-6 text-black dark:text-slate-400">
         {category} &gt; {data && <span>{data.title}</span>}
       </p>
       <div className="w-full flex justify-center items-center p-20 ">
@@ -51,12 +51,12 @@ export default function Detail() {
             <img className="h-96 min-w-96 object-contain" src={data.image} />
           )}
         </div>
-        <div className="h-96 flex flex-col text-slate-400 justify-between ">
+        <div className="h-96 flex flex-col text-black dark:text-slate-400 justify-between ">
           {data && (
             <div className="flex items-center">
               <h3 className="text-2xl font-bold">
                 {data.title}
-                <span className="bg-green-500 text-white text-base rounded-2xl px-2 py-1 ml-3">
+                <span className="bg-green-500 text-black dark:text-white text-base rounded-2xl px-2 py-1 ml-3">
                   NEW
                 </span>
               </h3>
@@ -73,7 +73,7 @@ export default function Detail() {
             <button className="bg-violet-600 text-white rounded-lg p-3.5 hover:bg-violet-700">
               장바구니에 담기
             </button>
-            <button className="bg-inherit border-slate-400 border text-slate-400 rounded-lg p-3 ml-3.5 hover:bg-slate-400 hover:text-slate-700">
+            <button className="bg-inherit border-black text-black dark:border-slate-400 border dark:text-slate-400 rounded-lg p-3 ml-3.5 dark:hover:bg-slate-400 dark:hover:text-slate-700 hover:bg-black hover:text-white">
               장바구니로 이동
             </button>
           </div>

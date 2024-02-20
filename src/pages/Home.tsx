@@ -7,7 +7,7 @@ import { ShopDataAtom } from "../recoil/ShopDataAtom";
 export default function Home() {
   const item = useRecoilValue(ShopDataAtom);
   return (
-    <div className="bg-slate-700">
+    <div className="bg-white dark:bg-slate-700">
       <Carousel />
       <CategorySection
         category={"men's clothing"}
