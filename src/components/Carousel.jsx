@@ -25,7 +25,7 @@ export default class SimpleSlider extends Component {
             src="https://cdn.pixabay.com/photo/2021/07/23/15/55/jeans-6487623_1280.jpg"
             alt="banner1"
           />
-          <div className="absolute w-full bottom-96 left-32  text-white drop-shadow-4xl ">
+          <div className="absolute w-full top-1/2 left-32  text-white drop-shadow-4xl ">
             <h2 className="text-5xl mb-2">물빠진 청바지!</h2>
             <p className="text-xl">
               이제 막 도착한 패션 청바지를 구경해보세요.
@@ -43,7 +43,7 @@ export default class SimpleSlider extends Component {
             src="https://cdn.pixabay.com/photo/2016/02/17/14/24/work-desk-1205159_1280.jpg"
             alt="banner2"
           />
-          <div className="absolute w-full bottom-96 left-32  text-white drop-shadow-4xl ">
+          <div className="absolute w-full top-1/2  left-32  text-white drop-shadow-4xl ">
             <h2 className="text-5xl mb-2">신속한 업무처리!</h2>
             <p className="text-xl">다양한 디지털 상품을 둘러보세요.</p>
             <Link to={"/digital"}>
@@ -59,7 +59,7 @@ export default class SimpleSlider extends Component {
             src="https://cdn.pixabay.com/photo/2016/03/02/20/13/grocery-1232944_1280.jpg"
             alt="banner3"
           />
-          <div className="absolute w-full bottom-96 left-32  text-white drop-shadow-4xl ">
+          <div className="absolute w-full top-1/2  left-32  text-white drop-shadow-4xl ">
             <h2 className="text-5xl mb-2">신선한 식품!</h2>
             <p className="text-xl">
               농장 직배송으로 더욱 신선한 식품을 만나보세요.

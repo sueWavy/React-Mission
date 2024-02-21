@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { ShopDataAtom } from "../recoil/ShopDataAtom";
+import { CartItemAtom } from "../recoil/CartItemAtom";
 
 export default function Detail() {
   const item = useRecoilValue(ShopDataAtom);
-  const navigate = useNavigate();
+  const [cartItem, setCartItem] = useRecoilState(CartItemAtom);
   const [data, setData] = useState();
   const [category, setCategory] = useState();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const targetItem = item.find((it) => parseInt(it.id) === parseInt(id));
@@ -37,8 +39,10 @@ export default function Detail() {
     }
   }, [id, item]);
 
-  console.log(data);
-  console.log(category);
+  const addToCart = () => {
+    setCartItem((prev) => [...prev, data]);
+    console.log(cartItem);
+  };
 
   return (
     <div className="bg-white dark:bg-slate-700 w-full h-full mt-24">
@@ -70,10 +74,16 @@ export default function Detail() {
           </ul>
           {data && <p className="text-3xl">${data.price}</p>}
           <div className="flex">
-            <button className="bg-violet-600 text-white rounded-lg p-3.5 hover:bg-violet-700">
+            <button
+              onClick={addToCart}
+              className="bg-violet-600 text-white rounded-lg p-3.5 hover:bg-violet-700"
+            >
               장바구니에 담기
             </button>
-            <button className="bg-inherit border-black text-black dark:border-slate-400 border dark:text-slate-400 rounded-lg p-3 ml-3.5 dark:hover:bg-slate-400 dark:hover:text-slate-700 hover:bg-black hover:text-white">
+            <button
+              onClick={() => navigate("/cart")}
+              className="bg-inherit border-black text-black dark:border-slate-400 border dark:text-slate-400 rounded-lg p-3 ml-3.5 dark:hover:bg-slate-400 dark:hover:text-slate-700 hover:bg-black hover:text-white"
+            >
               장바구니로 이동
             </button>
           </div>

@@ -36,7 +36,7 @@ export default function CategorySection({ title, data, category, isPage }) {
       <h1 className="text-center text-4xl text-black dark:text-gray-400 font-bold">
         {title}
       </h1>
-      <div className="grid grid-cols-1 gap-8 justify-items-center mt-10 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-8 justify-items-center mt-10 lg:grid-cols-2 xl:grid-cols-4">
         {isSlice.map((item) => (
           <ItemCard key={item.id} item={item} />
         ))}

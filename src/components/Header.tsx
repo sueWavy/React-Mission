@@ -28,7 +28,7 @@ export default function Header() {
             <input className="p-2 " type="text" placeholder="검색" />
           </li>
           <li>
-            <button>
+            <button onClick={() => navigate("/cart")}>
               <BsCart4 />
             </button>
           </li>
