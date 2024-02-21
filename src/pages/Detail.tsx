@@ -65,13 +65,13 @@ export default function Detail() {
       <p className="pl-24 pt-6 text-black dark:text-slate-400">
         {category} &gt; {data && <span>{data.title}</span>}
       </p>
-      <div className="w-full flex justify-center items-center p-20 ">
+      <div className="w-full flex justify-center items-center p-20 xl:flex-row sm:flex-col">
         <div className="bg-white py-10 px-20 rounded-xl mr-10">
           {data && (
-            <img className="h-96 min-w-96 object-contain" src={data.image} />
+            <img className="h-96 min-w-96 object-contain " src={data.image} />
           )}
         </div>
-        <div className="h-96 flex flex-col text-black dark:text-slate-400 justify-between ">
+        <div className="h-96 flex flex-col text-black dark:text-slate-400 justify-between sm:mt-10">
           {data && (
             <div className="flex items-center">
               <h3 className="text-2xl font-bold">

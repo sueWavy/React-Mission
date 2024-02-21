@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CartItems({
   item,
@@ -10,14 +11,23 @@ export default function CartItems({
     return null;
   }
 
+  const navigate = useNavigate();
+  console.log(item);
+
   return (
     <div className="flex items-center mt-4">
       <img
-        className="w-72 h-52 object-contain bg-white rounded-xl p-5"
+        className="w-72 h-52 object-contain bg-white rounded-xl p-5 cursor-pointer"
         src={item.image}
+        onClick={() => navigate(`/product/${item.id}`)}
       />
       <div className="ml-10 flex flex-col justify-evenly h-44">
-        <p className="text-2xl font-bold dark:text-slate-400">{item.title}</p>
+        <p
+          className="text-2xl font-bold dark:text-slate-400 hover:underline cursor-pointer"
+          onClick={() => navigate(`/product/${item.id}`)}
+        >
+          {item.title}
+        </p>
         <p className="text-4xl dark:text-slate-400">
           ${Math.round(quantity * item.price)} (${item.price})
         </p>
