@@ -1,11 +1,24 @@
 import { atom, selector } from "recoil";
 
-const CART_ITEM_STORAGE_KEY = "cartItem";
+const CART_ITEM_STORAGE_KEY: string = "cartItem";
 
-const initialCartItemData =
-  JSON.parse(localStorage.getItem(CART_ITEM_STORAGE_KEY)) || [];
+// Retrieve data from localStorage and parse it into an array of Product objects
+const initialCartItemData: Product[] = JSON.parse(
+  localStorage.getItem(CART_ITEM_STORAGE_KEY) || "[]"
+);
 
-export const CartItemAtom = atom({
+type Product = {
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: { rate: number; count: number };
+  title: string;
+  quantity: number;
+};
+
+export const CartItemAtom = atom<Product[]>({
   key: "CartItemAtom",
   default: initialCartItemData,
 });
@@ -23,6 +36,6 @@ export const TotalPriceSelector = selector({
   },
 });
 
-export const saveCartItemToLocalStorage = (cartItemData) => {
+export const saveCartItemToLocalStorage = (cartItemData: Product[]) => {
   localStorage.setItem(CART_ITEM_STORAGE_KEY, JSON.stringify(cartItemData));
 };

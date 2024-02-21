@@ -17,7 +17,6 @@ export default function Cart() {
 
   const handleModal = () => {
     setIsModal((prev) => !prev);
-    console.log(isModal);
   };
 
   useEffect(() => {
@@ -44,8 +43,6 @@ export default function Cart() {
     setCartItem([]);
     setIsModal(false);
   };
-
-  console.log(cartItem);
 
   return (
     <>

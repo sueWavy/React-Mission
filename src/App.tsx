@@ -16,7 +16,6 @@ function App() {
     try {
       const res = await axios.get("https://fakestoreapi.com/products");
       setState(res.data);
-      console.log(res);
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +23,6 @@ function App() {
 
   useEffect(() => {
     getData();
-    console.log(state);
   }, []);
 
   return (

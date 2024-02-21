@@ -12,7 +12,6 @@ export default function CartItems({
   }
 
   const navigate = useNavigate();
-  console.log(item);
 
   return (
     <div className="flex items-center mt-4">
