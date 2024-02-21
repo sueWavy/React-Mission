@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ShopDataAtom } from "../recoil/ShopDataAtom";
-import { CartItemAtom } from "../recoil/CartItemAtom";
+import {
+  CartItemAtom,
+  saveCartItemToLocalStorage,
+} from "../recoil/CartItemAtom";
 
 export default function Detail() {
   const item = useRecoilValue(ShopDataAtom);
@@ -40,8 +43,21 @@ export default function Detail() {
   }, [id, item]);
 
   const addToCart = () => {
-    setCartItem((prev) => [...prev, data]);
-    console.log(cartItem);
+    // 아이템이 이미 장바구니에 있는지 확인 (배열의 각 요소를 돌며 일치시 true 아니면 false)
+    const isItemInCart = cartItem.some((cartItem) => cartItem.id === data.id);
+
+    // 아이템이 장바구니에 없으면 추가
+    if (!isItemInCart) {
+      setCartItem((prev) => [...prev, { ...data, quantity: 1 }]);
+    } else {
+      // 아이템이 이미 장바구니에 있으면 수량을 업데이트
+      setCartItem((prev) =>
+        prev.map((item) =>
+          item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    }
+    saveCartItemToLocalStorage(cartItem);
   };
 
   return (
