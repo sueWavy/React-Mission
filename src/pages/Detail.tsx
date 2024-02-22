@@ -6,17 +6,20 @@ import {
   CartItemAtom,
   saveCartItemToLocalStorage,
 } from "../recoil/CartItemAtom";
+import { Product } from "../recoil/ShopDataAtom";
 
 export default function Detail() {
   const item = useRecoilValue(ShopDataAtom);
   const [cartItem, setCartItem] = useRecoilState(CartItemAtom);
-  const [data, setData] = useState();
-  const [category, setCategory] = useState();
+  const [data, setData] = useState<Product | undefined>();
+  const [category, setCategory] = useState<string>("");
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const targetItem = item.find((it) => parseInt(it.id) === parseInt(id));
+    const targetItem = item.find(
+      (it) => it.id === (id ? parseInt(id) : undefined)
+    );
     let targetCategory = "";
 
     if (targetItem) {
@@ -43,23 +46,27 @@ export default function Detail() {
   }, [id, item]);
 
   const addToCart = () => {
-    // 아이템이 이미 장바구니에 있는지 확인 (배열의 각 요소를 돌며 일치시 true 아니면 false)
-    const isItemInCart = cartItem.some((cartItem) => cartItem.id === data.id);
+    if (data) {
+      const isItemInCart = cartItem.some((cartItem) => cartItem.id === data.id);
 
-    // 아이템이 장바구니에 없으면 추가
-    if (!isItemInCart) {
-      setCartItem((prev) => [...prev, { ...data, quantity: 1 }]);
+      if (!isItemInCart) {
+        // 카트에 없으면 추가하고 수량을 1로 설정
+        setCartItem((prev) => [...prev, { ...data, quantity: 1 }]);
+      } else {
+        // 이미 카트에 있으면 수량을 1 증가
+        setCartItem((prev) =>
+          prev.map((item) =>
+            item.id === data.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+        );
+      }
+      saveCartItemToLocalStorage(cartItem);
     } else {
-      // 아이템이 이미 장바구니에 있으면 수량을 업데이트
-      setCartItem((prev) =>
-        prev.map((item) =>
-          item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      );
+      console.error("Data is undefined. Unable to add item to cart.");
     }
-    saveCartItemToLocalStorage(cartItem);
   };
-
   return (
     <div className="bg-white dark:bg-slate-700 w-full h-full mt-24">
       <p className="pl-24 pt-6 text-black dark:text-slate-400">
