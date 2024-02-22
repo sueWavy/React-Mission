@@ -21,6 +21,7 @@ https://react-shop-five-sigma.vercel.app/
 + Recoil
 + Axios
 + Vite
++ Yarn
 + Tailwind
 + React Slick
 + React Icons
